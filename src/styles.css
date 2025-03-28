@@ -1,0 +1,23 @@
+div.palyer_list > div {
+    display: flex;
+    margin: 2rem 10rem 2rem 10rem;
+}
+
+div.palyer_list > div > div {
+    margin: 0rem 10rem 0rem 0rem;
+}
+
+div.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+div.flex-row > * {
+    display: block;
+    margin: 2rem 2rem 2rem 2rem;
+}
+
+table th,
+table td {
+    padding: 1rem;
+}

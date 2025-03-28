@@ -1,0 +1,33 @@
+# Used for developement
+# Go to this directory and run: `appx up`
+# Then you should be able to access :
+## API on https://localhost:31002
+
+networks:
+  smashing:
+
+services:
+  php:
+    image: php:apache-with-mysqli
+    build:
+      context: .
+    volumes:
+      - ./src/:/var/www/html/
+    ports:
+      - "8080:80/tcp"
+    networks:
+      - smashing
+
+  mariadb:
+    image: mariadb:latest
+    environment:
+      - MARIADB_RANDOM_ROOT_PASSWORD=1
+      - MARIADB_DATABASE=smashed
+      - MARIADB_USER=smash
+      - MARIADB_PASSWORD=spiked
+    volumes:
+      - ./data/:/var/lib/mysql
+      - ./schema.sql:/docker-entrypoint-initdb.d/00-schema.sql
+      - ./roaster.sql:/docker-entrypoint-initdb.d/10-roaster.sql
+    networks:
+      - smashing
